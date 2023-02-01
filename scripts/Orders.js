@@ -31,7 +31,19 @@ const buildOrderListItem = (order) => {
 
 
     const totalCost = foundMetal.price + foundStyle.price + foundSize.price
-    const costString = totalCost.toLocaleString("en-US", {
+    let finalCost
+
+    if (order.typeId === 1){
+        finalCost = totalCost
+    } else if (order.typeId === 2){
+        finalCost = totalCost * 2
+    } else if (order.typeId === 3) {
+        finalCost = totalCost * 4
+    } else {
+        finalCost = "please select a Jewelry type"
+    }
+    
+    const costString = finalCost.toLocaleString("en-US", {
         style: "currency",
         currency: "USD"
     })
